@@ -25,6 +25,12 @@ const Main = () => {
 		setTodo(updateTodo)
 	}
 
+	// 删除todo项
+	const deleteTodo = (id:string) => {
+		const updateTodos = todo.filter(item=>item.id!==id)
+		setTodo(updateTodos)
+	}
+
 	// 提交表单
 	const onSubmit = (e: FormEvent) => {
 		e.preventDefault()
@@ -42,7 +48,7 @@ const Main = () => {
 			<div className=' w-full max-w-[80%] sm:max-w-[500px]'>
 				<h1 className=' text-center text-3xl my-10 text-gray-600'>Todo List</h1>
 				<AddTodo onSubmit={onSubmit} inputVal={inputVal} setInputVal={setInputVal} />
-				<Todo todo={todo} handleCheckd={handleCheckd} />
+				<Todo todo={todo} handleCheckd={handleCheckd} deleteTodo={deleteTodo} />
 			</div>
 		</div>
 	)

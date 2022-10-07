@@ -3,9 +3,10 @@ import { TodoProp } from '../utils/type'
 import { BsXSquare } from "react-icons/bs";
 type typetodo = {
 	todo: TodoProp[],
-	handleCheckd: (id: string) => void
+	handleCheckd: (id: string) => void,
+	deleteTodo: (id: string) => void
 }
-const Todo = ({ todo, handleCheckd }: typetodo) => {
+const Todo = ({ todo, handleCheckd, deleteTodo }: typetodo) => {
 	return (
 		<div>
 			<ul>
@@ -17,7 +18,7 @@ const Todo = ({ todo, handleCheckd }: typetodo) => {
 									{item.task}
 								</p>
 								<div className='flex gap-4'>
-									<BsXSquare className='bg-red-500 text-white' />
+									<BsXSquare className='bg-red-500 text-white cursor-pointer' onClick={() => deleteTodo(item.id)} />
 									<input type="checkbox" checked={item.isCompleted} onChange={() => handleCheckd(item.id)} />
 								</div>
 							</div>
